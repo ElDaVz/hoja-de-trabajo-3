@@ -5,18 +5,6 @@ public class Sorter {
         //...
     }
 
-    public static int getMax(Integer[] array)  {
-        var max = array[0];
-
-        for (int num : array) {
-            if (num > max) {
-                max = num;
-            }
-        }
-
-        return max;
-    }
-
     public static void gnomeSort(Integer[] arr) {
         if (arr == null || arr.length == 0) return;
 
@@ -59,8 +47,7 @@ public class Sorter {
         Integer[] L = new Integer[n1];
         Integer[] R = new Integer[n2];
 
-        for (int i = 0; i < n1; i++)
-            L[i] = arr[left + i];
+        System.arraycopy(arr, left, L, 0, n1);
         for (int j = 0; j < n2; j++)
             R[j] = arr[mid + 1 + j];
 
