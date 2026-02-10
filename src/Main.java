@@ -1,12 +1,14 @@
 import app.RandomNumbersGenerator;
 import app.Sorter;
 
-public class Main {
-    public static void main(String[] args) {
-        RandomNumbersGenerator g = new RandomNumbersGenerator(3000);
-        var array = g.getArrayAsArray();
+import java.io.IOException;
 
-        Sorter.gnomeSort(array);
-        Sorter.heapSort(array);
+public class Main {
+    public static void main(String[] args) throws IOException {
+        RandomNumbersGenerator g = new RandomNumbersGenerator(10);
+        var h = g.readFile();
+        for (Integer n : h) {
+            System.out.println(n);
+        }
     }
 }
