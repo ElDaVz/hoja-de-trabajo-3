@@ -5,7 +5,7 @@ public class Sorter {
         //...
     }
 
-    public static void heapify(int[] array, int length, int i) {
+    public static void heapify(Integer[] array, int length, int i) {
         int leftChild = 2*i+1;
         int rightChild = 2*i+2;
         int largest = i;
@@ -26,10 +26,11 @@ public class Sorter {
         }
     }
 
-    public static void heapSort(int[] array) {
-        if (array.length == 0) return;
+    public static void heapSort(Integer[] array) {
+        if (array == null || array.length == 0) return;
 
         int length = array.length;
+
 
         for (int i = length / 2 - 1; i >= 0; i--)
             heapify(array, length, i);

@@ -26,52 +26,52 @@ public class SorterTests {
 
     @Test
     void testHeapSortBasic() {
-        int[] arr = {5, 3, 8, 4, 2};
+        Integer[] arr = {5, 3, 8, 4, 2};
         Sorter.heapSort(arr);
 
-        assertArrayEquals(new int[]{2, 3, 4, 5, 8}, arr,
+        assertArrayEquals(new Integer[]{2, 3, 4, 5, 8}, arr,
                 "Array should be sorted in ascending order");
     }
 
     @Test
     void testHeapSortAlreadySorted() {
-        int[] arr = {1, 2, 3, 4, 5};
+        Integer[] arr = {1, 2, 3, 4, 5};
         Sorter.heapSort(arr);
 
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arr,
+        assertArrayEquals(new Integer[]{1, 2, 3, 4, 5}, arr,
                 "Already sorted array should remain unchanged");
     }
 
     @Test
     void testHeapSortReverseOrder() {
-        int[] arr = {9, 7, 5, 3, 1};
+        Integer[] arr = {9, 7, 5, 3, 1};
         Sorter.heapSort(arr);
 
-        assertArrayEquals(new int[]{1, 3, 5, 7, 9}, arr,
+        assertArrayEquals(new Integer[]{1, 3, 5, 7, 9}, arr,
                 "Reverse ordered array should be sorted correctly");
     }
 
     @Test
     void testHeapSortWithDuplicates() {
-        int[] arr = {4, 1, 3, 4, 2, 1};
+        Integer[] arr = {4, 1, 3, 4, 2, 1};
         Sorter.heapSort(arr);
 
-        assertArrayEquals(new int[]{1, 1, 2, 3, 4, 4}, arr,
+        assertArrayEquals(new Integer[]{1, 1, 2, 3, 4, 4}, arr,
                 "HeapSort should correctly handle duplicate values");
     }
 
     @Test
     void testHeapSortSingleElement() {
-        int[] arr = {42};
+        Integer[] arr = {42};
         Sorter.heapSort(arr);
 
-        assertArrayEquals(new int[]{42}, arr,
+        assertArrayEquals(new Integer[]{42}, arr,
                 "Single element array should remain unchanged");
     }
 
     @Test
     void testHeapSortEmptyArray() {
-        int[] arr = {};
+        Integer[] arr = {};
         Sorter.heapSort(arr);
 
         assertEquals(0, arr.length,
@@ -80,7 +80,7 @@ public class SorterTests {
 
     @Test
     void testHeapPropertyAfterHeapifyRoot() {
-        int[] arr = {3, 9, 2, 1, 4, 5};
+        Integer[] arr = {3, 9, 2, 1, 4, 5};
 
         // heapify only the root
         Sorter.heapify(arr, arr.length, 0);
