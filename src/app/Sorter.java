@@ -10,17 +10,14 @@ public class Sorter {
         int rightChild = 2*i+2;
         int largest = i;
 
-        // if the left child is larger than parent
         if (leftChild < length && array[leftChild] > array[largest]) {
             largest = leftChild;
         }
 
-        // if the right child is larger than parent
         if (rightChild < length && array[rightChild] > array[largest]) {
             largest = rightChild;
         }
 
-        // if a swap needs to occur
         if (largest != i) {
             int temp = array[i];
             array[i] = array[largest];
@@ -32,9 +29,8 @@ public class Sorter {
     public static void heapSort(int[] array) {
         if (array.length == 0) return;
 
-        // Building the heap
         int length = array.length;
-        // we're going from the first non-leaf to the root
+
         for (int i = length / 2 - 1; i >= 0; i--)
             heapify(array, length, i);
 
