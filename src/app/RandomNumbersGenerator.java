@@ -22,4 +22,5 @@ public class RandomNumbersGenerator {
     public Integer[] getArrayAsArray() {
         return this.arr.toArray(new Integer[0]);
     }
+
 }
