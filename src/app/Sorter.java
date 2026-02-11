@@ -1,9 +1,25 @@
 package app;
 
+/**
+ * Clase utilitaria que contiene diferentes algoritmos de ordenamiento.
+ * <p>
+ * Todos los métodos son estáticos y trabajan sobre arreglos cuyos elementos
+ * implementan la interfaz {@link Comparable}. Esta clase no puede ser instanciada.
+ * </p>
+ */
 public class Sorter {
 
+    /**
+     * Constructor privado para evitar la instanciación de la clase.
+     */
     private Sorter() {}
 
+    /**
+     * Ordena un arreglo utilizando el algoritmo Gnome Sort.
+     *
+     * @param <T> Tipo de los elementos del arreglo, debe implementar Comparable
+     * @param arr Arreglo a ordenar
+     */
     public static <T extends Comparable<T>> void gnomeSort(T[] arr) {
         if (arr == null || arr.length == 0) return;
 
@@ -23,11 +39,25 @@ public class Sorter {
         }
     }
 
+    /**
+     * Ordena un arreglo utilizando el algoritmo Merge Sort.
+     *
+     * @param <T> Tipo de los elementos del arreglo
+     * @param arr Arreglo a ordenar
+     */
     public static <T extends Comparable<T>> void mergeSort(T[] arr) {
         if (arr == null || arr.length <= 1) return;
         mergeSort(arr, 0, arr.length - 1);
     }
 
+    /**
+     * Método auxiliar recursivo de Merge Sort.
+     *
+     * @param <T>   Tipo de los elementos
+     * @param arr   Arreglo a ordenar
+     * @param left  Índice izquierdo
+     * @param right Índice derecho
+     */
     private static <T extends Comparable<T>> void mergeSort(T[] arr, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
@@ -39,6 +69,15 @@ public class Sorter {
         }
     }
 
+    /**
+     * Combina dos subarreglos ordenados en uno solo.
+     *
+     * @param <T>   Tipo de los elementos
+     * @param arr   Arreglo original
+     * @param left  Índice inicial
+     * @param mid   Índice medio
+     * @param right Índice final
+     */
     private static <T extends Comparable<T>> void merge(T[] arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
@@ -73,6 +112,12 @@ public class Sorter {
         }
     }
 
+    /**
+     * Ordena un arreglo utilizando el algoritmo Quick Sort.
+     *
+     * @param <T> Tipo de los elementos
+     * @param arr Arreglo a ordenar
+     */
     public static <T extends Comparable<T>> void quickSort(T[] arr) {
         if (arr == null || arr.length <= 1) return;
         quickSort(arr, 0, arr.length - 1);
@@ -88,25 +133,39 @@ public class Sorter {
     }
 
     private static <T extends Comparable<T>> int partition(T[] arr, int low, int high) {
+
+        // 🔹 Pivote aleatorio para evitar el peor caso
+        int randomIndex = low + (int) (Math.random() * (high - low + 1));
+        T temp = arr[randomIndex];
+        arr[randomIndex] = arr[high];
+        arr[high] = temp;
+
         T pivot = arr[high];
         int i = low - 1;
 
         for (int j = low; j < high; j++) {
-            if (arr[j].compareTo(pivot) <= 0) {
+            // 🔹 IMPORTANTE: usar < y no <=
+            if (arr[j].compareTo(pivot) < 0) {
                 i++;
-                T temp = arr[i];
+                temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
         }
 
-        T temp = arr[i + 1];
+        temp = arr[i + 1];
         arr[i + 1] = arr[high];
         arr[high] = temp;
 
         return i + 1;
     }
 
+    /**
+     * Ordena un arreglo utilizando el algoritmo Heap Sort.
+     *
+     * @param <T>     Tipo de los elementos
+     * @param array  Arreglo a ordenar
+     */
     public static <T extends Comparable<T>> void heapSort(T[] array) {
         if (array == null || array.length == 0) return;
 
@@ -125,6 +184,14 @@ public class Sorter {
         }
     }
 
+    /**
+     * Mantiene la propiedad de heap en un subárbol.
+     *
+     * @param <T>     Tipo de los elementos
+     * @param array  Arreglo
+     * @param length Tamaño del heap
+     * @param i      Índice raíz
+     */
     public static <T extends Comparable<T>> void heapify(T[] array, int length, int i) {
         int leftChild = 2 * i + 1;
         int rightChild = 2 * i + 2;
@@ -147,6 +214,11 @@ public class Sorter {
         }
     }
 
+    /**
+     * Ordena un arreglo de enteros utilizando el algoritmo Radix Sort.
+     *
+     * @param arr Arreglo de enteros a ordenar
+     */
     public static void radixSort(Integer[] arr) {
         if (arr == null || arr.length == 0) return;
 
@@ -171,6 +243,12 @@ public class Sorter {
         }
     }
 
+    /**
+     * Algoritmo Counting Sort usado como subrutina de Radix Sort.
+     *
+     * @param arr Arreglo a ordenar
+     * @param exp Dígito actual a evaluar
+     */
     private static void countingSort(int[] arr, int exp) {
         int n = arr.length;
         int[] output = new int[n];
