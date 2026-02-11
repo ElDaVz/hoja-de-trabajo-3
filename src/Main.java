@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        int[] sizes = {250000};
+        int[] sizes = {100000, 150000 , 200000 , 250000};
 
         for (int size : sizes) {
 
@@ -23,38 +23,38 @@ public class Main {
             Integer[] original = RandomNumbersGenerator.readFile();
 
             // ===== GNOME SORT =====
-           /* Integer[] gnomeArr = Arrays.copyOf(original, original.length);
+           Integer[] gnomeArr = Arrays.copyOf(original, original.length);
             System.out.println(Arrays.toString(gnomeArr));
             Sorter.gnomeSort(gnomeArr);
             System.out.println(Arrays.toString(gnomeArr));
             Sorter.gnomeSort(gnomeArr);
-            //System.out.println(Arrays.toString(gnomeArr));*/
+            //System.out.println(Arrays.toString(gnomeArr));
 
             // ===== MERGE SORT =====
-           /* Integer[] mergeArr = Arrays.copyOf(original, original.length);
+            Integer[] mergeArr = Arrays.copyOf(original, original.length);
             System.out.println(Arrays.toString(mergeArr));
             Sorter.mergeSort(mergeArr);
             System.out.println(Arrays.toString(mergeArr));
             Sorter.mergeSort(mergeArr);
-            System.out.println(Arrays.toString(mergeArr));*/
+            System.out.println(Arrays.toString(mergeArr));
 
             // ===== QUICK SORT =====
-            /*Integer[] quickArr = Arrays.copyOf(original, original.length);
+            Integer[] quickArr = Arrays.copyOf(original, original.length);
             System.out.println(Arrays.toString(quickArr));
             Sorter.quickSort(quickArr);
             System.out.println(Arrays.toString(quickArr));
             Sorter.quickSort(quickArr);
-            System.out.println(Arrays.toString(quickArr));*/
+            System.out.println(Arrays.toString(quickArr));
 
 
 
             // ===== RADIX SORT =====
-            /*Integer[] radixArr = Arrays.copyOf(original, original.length);
+            Integer[] radixArr = Arrays.copyOf(original, original.length);
             System.out.println(Arrays.toString(radixArr));
             Sorter.radixSort(radixArr);
             System.out.println(Arrays.toString(radixArr));
             Sorter.radixSort(radixArr);
-            System.out.println(Arrays.toString(radixArr));*/
+            System.out.println(Arrays.toString(radixArr));
 
             // ===== HEAP SORT =====
             Integer[] heapArr = Arrays.copyOf(original, original.length); // Creación del Array independiente
