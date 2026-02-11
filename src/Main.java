@@ -4,56 +4,65 @@ import app.Sorter;
 import java.io.IOException;
 import java.util.Arrays;
 
+/**
+ * En esta clase se ejecutarán las pruebas y los profile
+ * @author Cristian Orellana y Daniel Vasquez
+ */
 public class Main {
-
-    // Tamaños a evaluar
-    private static final int[] SIZES = {10, 100, 500, 1000, 2000, 3000};
 
     public static void main(String[] args) throws IOException {
 
-        for (int size : SIZES) {
+        int[] sizes = {250000};
 
-            // 1. Generar números aleatorios y guardarlos en archivo
+        for (int size : sizes) {
+
+            // 1. Generar números y guardarlos en archivo
             new RandomNumbersGenerator(size);
 
             // 2. Leer archivo
             Integer[] original = RandomNumbersGenerator.readFile();
 
-            System.out.println("\nTamaño del arreglo: " + size);
+            // ===== GNOME SORT =====
+           /* Integer[] gnomeArr = Arrays.copyOf(original, original.length);
+            System.out.println(Arrays.toString(gnomeArr));
+            Sorter.gnomeSort(gnomeArr);
+            System.out.println(Arrays.toString(gnomeArr));
+            Sorter.gnomeSort(gnomeArr);
+            //System.out.println(Arrays.toString(gnomeArr));*/
 
-            // ===== DATOS DESORDENADOS (caso promedio) =====
-            runAllSorts(original, "DESORDENADO");
+            // ===== MERGE SORT =====
+           /* Integer[] mergeArr = Arrays.copyOf(original, original.length);
+            System.out.println(Arrays.toString(mergeArr));
+            Sorter.mergeSort(mergeArr);
+            System.out.println(Arrays.toString(mergeArr));
+            Sorter.mergeSort(mergeArr);
+            System.out.println(Arrays.toString(mergeArr));*/
 
-            // ===== DATOS ORDENADOS (mejor caso) =====
-            Integer[] ordered = original.clone();
-            Arrays.sort(ordered); // ordenamos una vez
+            // ===== QUICK SORT =====
+            /*Integer[] quickArr = Arrays.copyOf(original, original.length);
+            System.out.println(Arrays.toString(quickArr));
+            Sorter.quickSort(quickArr);
+            System.out.println(Arrays.toString(quickArr));
+            Sorter.quickSort(quickArr);
+            System.out.println(Arrays.toString(quickArr));*/
 
-            runAllSorts(ordered, "ORDENADO");
+
+
+            // ===== RADIX SORT =====
+            /*Integer[] radixArr = Arrays.copyOf(original, original.length);
+            System.out.println(Arrays.toString(radixArr));
+            Sorter.radixSort(radixArr);
+            System.out.println(Arrays.toString(radixArr));
+            Sorter.radixSort(radixArr);
+            System.out.println(Arrays.toString(radixArr));*/
+
+            // ===== HEAP SORT =====
+            Integer[] heapArr = Arrays.copyOf(original, original.length); // Creación del Array independiente
+            System.out.println(Arrays.toString(heapArr));
+            Sorter.heapSort(heapArr); // Desordenado
+            System.out.println(Arrays.toString(heapArr));
+            Sorter.heapSort(heapArr); // Ordenado
+            System.out.println(Arrays.toString(heapArr));
         }
-    }
-
-    private static void runAllSorts(Integer[] data, String scenario) {
-
-        System.out.println("Escenario: " + scenario);
-
-        // Gnome Sort
-        Integer[] gnomeArr = data.clone();
-        Sorter.gnomeSort(gnomeArr);
-
-        // Merge Sort
-        Integer[] mergeArr = data.clone();
-        Sorter.mergeSort(mergeArr);
-
-        // Quick Sort
-        Integer[] quickArr = data.clone();
-        Sorter.quickSort(quickArr);
-
-        // Radix Sort
-        Integer[] radixArr = data.clone();
-        Sorter.radixSort(radixArr);
-
-        // Heap Sort (sort elegido)
-        Integer[] heapArr = data.clone();
-        Sorter.heapSort(heapArr);
     }
 }
